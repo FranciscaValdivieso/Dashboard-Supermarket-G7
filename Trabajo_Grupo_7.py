@@ -85,7 +85,7 @@ with c1:
     st.write("El gráfico muestra la evolución de las ventas totales a lo largo del tiempo. Se observa que las ventas diarias no siguen una tendencia clara de crecimiento o disminución sostenida, lo que sugiere un comportamiento relativamente estable de la demanda durante el período analizado. No obstante, se identifican varios picos significativos de ventas, especialmente durante los meses de febrero y marzo. Estos aumentos podrían estar relacionados con promociones, eventos especiales o días de alta demanda, como fines de semana o fechas festivas. Tras estos picos, se observa una disminución temporal en las ventas, lo cual es un comportamiento típico luego de jornadas con alta actividad comercial.")
 with c2:
     # Agrupar el total vendido por línea de producto
-    ingresos_por_producto = df.groupby("Product line")["Total"].sum().sort_values()
+    ingresos_por_producto = df_filtrado.groupby("Product line")["Total"].sum().sort_values()
     colores = sns.color_palette("pastel", n_colors=len(ingresos_por_producto))
     # Crear gráfico con colores distintos por barra
     Fig2 = plt.figure(figsize=(10, 5))
@@ -123,7 +123,7 @@ st.subheader('Comportamiento ingresos brutos')
 c1,c2=st.columns([50,50])
 with c1:
     Fig5=plt.figure(figsize=(8,5))
-    sns.scatterplot(data=df, x='cogs', y='gross income')
+    sns.scatterplot(data=df_filtrado, x='cogs', y='gross income')
     plt.title('Relación entre el costo de los productvos vendidos e ingreso Bruto')
     plt.xlabel('Total costo productos')
     plt.ylabel('Ingreso Bruto')
@@ -131,7 +131,7 @@ with c1:
     st.write('El gráfico muestra una relación lineal positiva entre el costo de los productos vendidos (cogs) y el ingreso bruto (gross income), lo cual sugiere que el ingreso se genera de forma proporcional al costo. Adicionalmente, no se observan variaciones significativas fuera de la línea, por lo cual se puede asumir que los ingresos fueron relativamente proporcionales al costo.')
 with c2:
     # Agrupar por Sucursal y Línea de Producto, sumando el ingreso bruto
-    df_grouped = df.groupby(['Branch', 'Product line'])['gross income'].sum().unstack(fill_value=0)
+    df_grouped = df_filtrado.groupby(['Branch', 'Product line'])['gross income'].sum().unstack(fill_value=0)
 
     # Crear gráfico de barras apiladas
     fig6,ax= plt.subplots(figsize=(10, 6))
@@ -153,7 +153,7 @@ with c2:
 st.subheader('Correlación númerica y Métodos de pago utilizados')
 c1,c2=st.columns([50,50])
 with c1:
-    #primero se creara un nuevo df el cual solamente contendra las variables númericas, ya que para los modelos matematicos solamente se trabaja con valores numericos.
+    #primero se creara un nuevo df el cual solamente contendra las variables númericas, ya que para los modelos matematicos solamente se trabaja con valores númericos.
     df_correlación=df.drop(['Branch','Customer type','Gender','Product line','Date','Time','Invoice ID','Payment','City','gross margin percentage'], axis=1)
     
     
