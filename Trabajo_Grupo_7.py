@@ -76,7 +76,7 @@ c1,c2=st.columns([50,50])
 with c1:
 
     Fig1=plt.figure(figsize=(10,5))
-    df.groupby('Date')['Total'].count().plot(kind='line')
+    df.groupby('Date')['Total'].sum().plot(kind='line')
     plt.xlabel('Fecha')
     plt.title('Evolución de las ventas totales en el tiempo')
     plt.ylabel('Monto total de Ventas (USD)')
