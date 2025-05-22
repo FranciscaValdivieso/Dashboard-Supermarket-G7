@@ -175,4 +175,4 @@ with c2:
 
     fig8.update_traces(textinfo='percent+label')
     st.plotly_chart(fig8)
-    st.write('El gráfico muestra que el método de pago mas utilizado por los clientes de la tienda de conveniencia son las Ewallet, seguidas del efectivo y finalmente las tarjetas de crédito, esta infomación es relevante para realizar futuras promociones de acuerdo a los medios de pago utilizados por los clientes.')
+    st.write('El gráfico muestra que el método de pago más utilizado por los clientes de la tienda de conveniencia son las Ewallet, seguidas del efectivo y finalmente las tarjetas de crédito, esta infomación es relevante para realizar futuras promociones de acuerdo a los medios de pago utilizados por los clientes.')
